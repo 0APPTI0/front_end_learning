@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 
 class XiaojiejieItem extends Component {
 
@@ -10,7 +11,9 @@ class XiaojiejieItem extends Component {
 
     render() { 
         return (
-            <li onClick={this.handleClick}>{this.props.content}</li>
+            <li onClick={this.handleClick}>
+                {this.props.avname}为你服务{this.props.content}
+            </li>
         );
     }
 
@@ -18,5 +21,17 @@ class XiaojiejieItem extends Component {
         this.props.deleteItem(this.props.index)
     }
 }
- 
+
+/* 父组件向子组件进行传值的校验 */
+XiaojiejieItem.prototypes={
+    avname:PropTypes.string.isRequired,
+    content:PropTypes.string,
+    index:PropTypes.number,
+    deleteItem:PropTypes.func
+}
+
+XiaojiejieItem.defaultProps={
+    avname:'松岛枫'
+}
+
 export default XiaojiejieItem;
